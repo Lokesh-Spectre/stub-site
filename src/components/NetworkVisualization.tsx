@@ -6,11 +6,11 @@ const NetworkVisualization = () => {
 
   useEffect(() => {
     // Generate random network nodes
-    const newNodes = Array.from({ length: 20 }, (_, i) => ({
+    const newNodes = Array.from({ length: 60 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      connected: Math.random() > 0.3,
+      connected: false,
     }));
 
     // Generate connections between nearby nodes
@@ -21,7 +21,7 @@ const NetworkVisualization = () => {
           const distance = Math.sqrt(
             Math.pow(node.x - otherNode.x, 2) + Math.pow(node.y - otherNode.y, 2)
           );
-          if (distance < 30) {
+          if (distance < 20) {
             newConnections.push({
               from: node.id,
               to: otherNode.id,
